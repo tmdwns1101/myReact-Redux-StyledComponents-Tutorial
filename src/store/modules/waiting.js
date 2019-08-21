@@ -4,6 +4,7 @@ const CHANGE_INPUT = "waiting/CHANGE_INPUT"; // input 값 변경
 const CREATE = "waiting/CREATE"; //명단에 이름 추가
 const ENTER = "waiting/ENTER"; //입장
 const LEAVE = "waiting/LEAVE"; //나감
+const DISABLE = "waiting/DISABLE"; //버튼 활성화
 
 /*export const changeInput = text => ({type: CHANGE_INPUT, payload: text});
 export const create = text => ({type: CREATE, payload: text});
@@ -17,7 +18,7 @@ export const changeInput = createAction(CHANGE_INPUT, text => text);
 export const create = createAction(CREATE, text => ({ text, id: id++ }));
 export const enter = createAction(ENTER, id => id);
 export const leave = createAction(LEAVE, id => id);
-
+export const disableButton = createAction(DISABLE, disable => disable);
 const initialState = {
   input: "",
   list: [
@@ -36,7 +37,8 @@ const initialState = {
       name: "팥쥐",
       entered: false
     }
-  ]
+  ],
+  disable: true
 };
 
 export default handleActions(
@@ -62,6 +64,10 @@ export default handleActions(
     [LEAVE]: (state, action) => ({
       ...state,
       list: state.list.filter(item => item.id !== action.payload)
+    }),
+    [DISABLE]: (state, action) => ({
+      ...state,
+      disable: action.payload
     })
   },
   initialState

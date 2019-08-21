@@ -30,6 +30,18 @@ const WaitingListBlock = styled.div`
   }
 `;
 
+const SubmitButton = styled.button`
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  transition: 0.3s all ease-in;
+  ${props =>
+    !props.disable &&
+    css`
+      background: #37b24d;
+      color: white;
+    `}
+`;
+
 const WaitingListForm = styled.ul`
   list-style: none;
   padding-left: 0;
@@ -71,7 +83,8 @@ const WaitingList = ({
   onChange,
   onSubmit,
   onEnter,
-  onLeave
+  onLeave,
+  disable
 }) => {
   const waitingItems = waitingList.map(w => (
     <WaitingItem
@@ -92,7 +105,9 @@ const WaitingList = ({
           onChange={onChange}
           placeholder="명단을 입력하세요"
         />
-        <button>등록</button>
+        <SubmitButton disable={disable} disabled={disable}>
+          등록
+        </SubmitButton>
       </form>
       <WaitingListForm>{waitingItems}</WaitingListForm>
     </WaitingListBlock>

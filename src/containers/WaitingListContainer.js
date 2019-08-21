@@ -7,12 +7,20 @@ import WaitingList from "../components/WaitingList";
 class WaitingListContainer extends Component {
   handleChange = e => {
     const { WaitingActions } = this.props;
+    const length = e.target.value.length;
+
+    if (length > 1) {
+      WaitingActions.disableButton(false);
+    } else {
+      WaitingActions.disableButton(true);
+    }
     WaitingActions.changeInput(e.target.value);
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const { WaitingActions, input } = this.props;
+    const { WaitingActions, input, disable } = this.props;
+    WaitingActions.disableButton(!disable);
     WaitingActions.create(input);
     WaitingActions.changeInput("");
   };
@@ -28,7 +36,7 @@ class WaitingListContainer extends Component {
   };
 
   render() {
-    const { input, list } = this.props;
+    const { input, list, disable } = this.props;
     return (
       <WaitingList
         input={input}
@@ -37,6 +45,7 @@ class WaitingListContainer extends Component {
         onSubmit={this.handleSubmit}
         onEnter={this.handleEnter}
         onLeave={this.handleLeave}
+        disable={disable}
       />
     );
   }
@@ -44,7 +53,8 @@ class WaitingListContainer extends Component {
 
 const mapStateToProps = ({ waiting }) => ({
   input: waiting.input,
-  list: waiting.list
+  list: waiting.list,
+  disable: waiting.disable
 });
 
 const mapDispatchProps = dispatch => ({
