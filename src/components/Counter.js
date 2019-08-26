@@ -6,6 +6,7 @@ const CounterBlock = styled.div`
   padding: 1rem;
   width: 100%;
   box-sizing: border-box;
+  background: white;
 
   h1 {
     margin-top: 0;

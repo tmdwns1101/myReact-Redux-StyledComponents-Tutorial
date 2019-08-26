@@ -1,23 +1,22 @@
 import React from "react";
-import styled from "styled-components";
-import PaletteContainer from "./containers/PaletteContainer";
-import CounterContainer from "./containers/CounterContainer";
-import WaitingListContainer from "./containers/WaitingListContainer";
-
-const AppBlock = styled.div`
-  width: 712px;
-  height: 712px;
-  margin: 0 auto;
-  margin-top: 4rem;
-`;
+import { Route, Link } from "react-router-dom";
+import CouterWaitPage from "./pages/CouterWaitPage";
+import MoviePage from "./pages/MoviePage";
 
 function App() {
   return (
-    <AppBlock>
-      <PaletteContainer />
-      <CounterContainer />
-      <WaitingListContainer />
-    </AppBlock>
+    <>
+      <ul>
+        <li>
+          <Link to="/">카운터 페이지</Link>
+        </li>
+        <li>
+          <Link to="/movie">영화 페이지</Link>
+        </li>
+      </ul>
+      <Route path="/" component={CouterWaitPage} exact />
+      <Route path="/movie" component={MoviePage} />
+    </>
   );
 }
 

@@ -19,8 +19,8 @@ class WaitingListContainer extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { WaitingActions, input, disable } = this.props;
-    WaitingActions.disableButton(!disable);
+    const { WaitingActions, input } = this.props;
+    WaitingActions.disableButton(true);
     WaitingActions.create(input);
     WaitingActions.changeInput("");
   };

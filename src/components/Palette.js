@@ -1,10 +1,19 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+const colors = [
+  "black",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "indigo",
+  "violet"
+];
 
 const PaletteBlock = styled.div`
-  background: black;
+  background: #e64980;
   color: white;
   padding: 1rem;
   display: inline-flex;

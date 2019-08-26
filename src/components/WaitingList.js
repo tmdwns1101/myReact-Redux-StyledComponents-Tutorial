@@ -9,7 +9,8 @@ const WaitingListBlock = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-
+  margin-bottom: 1rem;
+  background: white;
   h2 {
     margin-top: 0;
     margin-bottom: 1rem;
